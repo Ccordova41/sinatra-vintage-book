@@ -38,18 +38,16 @@
   }
 
   h2 {
-    border-bottom: 2px solid #ccc;
-    font-size: 24px;
-    line-height: 36px;
-    margin-bottom: 16px;
-    font-family: 'Dawning of a New Day', cursive;
-
+    border-bottom: 2px dotted #CEA0A6;
+    font-size: 55px;
+    line-height: 45px;
+    margin-bottom: 20px;
+    text-align: center;
   }
 
   h3 {
     font-size: 18px;
     line-height: 36px;
-    font-family: 'Dawning of a New Day', cursive;
 
   }
 
@@ -84,7 +82,7 @@
   }
 
   footer.branding {
-    border-top: 2px solid #ccc;
+    border-top: 2px dotted #CEA0A6;
     margin-top: 20px;
     padding-top: 20px;
   }
