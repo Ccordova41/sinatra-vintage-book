@@ -7,6 +7,8 @@ class CreateBooks < ActiveRecord::Migration
       t.string :genre
       t.integer :pages
       t.integer :user_id
-    end 
+
+      t.timestamps null: false 
+    end
   end
 end
