@@ -11,6 +11,7 @@ gem 'shotgun'
 gem 'pry'
 gem 'bcrypt'
 gem "tux"
+gem 'validates_email_format_of'
 
 group :test do
   gem 'rspec'

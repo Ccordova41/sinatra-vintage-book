@@ -102,6 +102,8 @@ GEM
       sinatra (>= 1.2.1)
     tzinfo (1.2.4)
       thread_safe (~> 0.1)
+    validates_email_format_of (1.6.3)
+      i18n
     xpath (2.1.0)
       nokogiri (~> 1.3)
 
@@ -124,6 +126,7 @@ DEPENDENCIES
   sqlite3
   thin
   tux
+  validates_email_format_of
 
 BUNDLED WITH
    1.16.1
