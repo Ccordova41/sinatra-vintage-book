@@ -7,5 +7,6 @@ class CreateBooks < ActiveRecord::Migration
       t.string :genre
       t.integer :pages
       t.integer :user_id
+    end 
   end
 end
