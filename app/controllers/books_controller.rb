@@ -2,8 +2,12 @@ class BooksController < ApplicationController
 
   # GET: /books
   get "/books" do
-    @books = Book.all
-    erb :"/books/index.html"
+    if logged_in?
+      @books = Book.all
+      erb :"/books/index.html"
+    else
+      redirect to "/login"
+    end 
   end
 
   # GET: /books/new
@@ -24,7 +28,7 @@ class BooksController < ApplicationController
       book.user_id = session[:user_id]
       book.save
       redirect to "/books"
-    end   
+    end
   end
 
   # GET: /books/5
