@@ -28,7 +28,6 @@ class UsersController < ApplicationController
     end
   end
 
-
   get "/login" do
     if !logged_in?
       erb :"/users/login.html"
@@ -47,6 +46,14 @@ class UsersController < ApplicationController
     end
   end
 
+  get "/logout" do
+    if logged_in?
+      session.clear
+      redirect to "/home"
+    else
+      redirect to "/login"
+    end 
+  end
   # GET: /users/5
   get "/users/:slug" do
     erb :"/users/show.html"
