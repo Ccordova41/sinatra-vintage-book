@@ -33,18 +33,36 @@ class BooksController < ApplicationController
 
   # GET: /books/5
   get "/books/:slug" do
-    @book = Book.find_by_slug(params[:slug])
-    erb :"/books/show.html"
+    if logged_in?
+      @book = Book.find_by_slug(params[:slug])
+      erb :"/books/show.html"
+    else
+      redirect to "/login"
   end
 
   # GET: /books/5/edit
-  get "/books/:id/edit" do
-    erb :"/books/edit.html"
+  get "/books/:slug/edit" do
+    if logged_in?
+      @book = Book.find_by_slug(params[:slug])
+      if @book.user_id == current_user.id
+        erb :"books/edit.html"
+      else
+        redirect to "/books"
+      end
+    else
+      redirect to "/login"
+    end
   end
 
   # PATCH: /books/5
-  patch "/books/:id" do
-    redirect "/books/:id"
+  patch "/books/:slug" do
+    @book = Book.find_by_slug(params[:slug])
+    if params[:title].empty? || params[:author].empty?
+      redirect to "/books/#{@book.slug}"/edit
+    else
+      @book.update(title: params[:title],author: params[:author],publisher: params[:publisher],genre: params[:genre],pages: params[:pages])
+      redirect "/books/#{@book.slug}"
+    end
   end
 
   # DELETE: /books/5/delete
