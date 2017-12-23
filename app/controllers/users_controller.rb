@@ -52,11 +52,16 @@ class UsersController < ApplicationController
       redirect to "/home"
     else
       redirect to "/login"
-    end 
+    end
   end
   # GET: /users/5
   get "/users/:slug" do
-    erb :"/users/show.html"
+    if logged_in?
+      @user = User.find_by_slug(params[:slug])
+      erb :"/users/show.html"
+    else
+      redirect to "login"
+    end
   end
 
   # GET: /users/5/edit
@@ -70,7 +75,9 @@ class UsersController < ApplicationController
   end
 
   # DELETE: /users/5/delete
-  delete "/users/:id/delete" do
-    redirect "/users"
+  delete "/users/:slug/delete" do
+    @user = find_by_slug(params[:slug])
+    @user.delete
+    redirect "/home"
   end
 end
