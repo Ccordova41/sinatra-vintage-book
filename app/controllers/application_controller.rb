@@ -9,7 +9,7 @@ class ApplicationController < Sinatra::Base
     set :session_secret, "secret"
   end
 
-  get "/" do
+  get "/home" do
     erb :welcome
   end
 
@@ -22,5 +22,5 @@ class ApplicationController < Sinatra::Base
     def logged_in?
       !!session[:user_id]
     end
-  end 
+  end
 end
