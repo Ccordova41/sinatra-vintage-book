@@ -1,1 +1,28 @@
 <h1><%=@book.title%></h1>
+
+<h4>Title == <%=@book.title%></h4><br>
+<br>
+<h4>Author == <%=@book.author%></h4><br>
+<br>
+<h4>Publisher == <%=@book.publisher%></h4><br>
+<br>
+<h4>Genre == <%=@book.genre%></h4><br>
+<br>
+<h4>Pages == <%=@book.pages%></h4><br>
+<br>
+
+<% if @book.user == current_user %>
+  <a href="/users/<%=@user.slug%>/books/<%=@book.slug%>/edit">Edit Book</a>
+  <br>
+  <br>
+  <form method="POST" action="/users/<%=@user.slug%>/books/<%=@book.slug%>/delete">
+    <input type="hidden" name="_method" value="DELETE">
+    <input type="submit" value="Delete Log">
+  </form>
+<% end %>
+<br>
+
+
+
+
+Go back to <a href="/users/<%=current_user.slug%>">My page</a>.

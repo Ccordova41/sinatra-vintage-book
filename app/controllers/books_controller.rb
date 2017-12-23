@@ -16,7 +16,7 @@ class BooksController < ApplicationController
       @book = Book.new(params)
       @book.user_id = session[:user_id]
       @book.save
-      redirect to "/books/#{@book.slug}"
+      redirect to "/"
     end
   end
 
