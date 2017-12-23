@@ -1,1 +1,8 @@
 <h2>Great to have you, <%=@user.username%>!</h2>
+</br>
+<h3>No need for this awesome site?</h3>
+
+<form method="POST" action="/users/<%=@user.slug%>/delete">
+  <input type="hidden" name="_method" value="DELETE">
+  <input type="submit" value="Delete Account">
+</form>   
