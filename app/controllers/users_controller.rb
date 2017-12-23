@@ -65,16 +65,6 @@ class UsersController < ApplicationController
     end
   end
 
-  # GET: /users/5/edit
-  # get "/users/:id/edit" do
-  #   erb :"/users/edit.html"
-  # end
-  #
-  # # PATCH: /users/5
-  # patch "/users/:id" do
-  #   redirect "/users/:id"
-  # end
-
   # DELETE: /users/5/delete
   delete "/users/:slug/delete" do
     @user = User.find_by_slug(params[:slug])
