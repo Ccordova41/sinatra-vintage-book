@@ -55,7 +55,7 @@ end
   patch "/users/:user_slug/books/:slug" do
     @user = current_user
     @book = current_user.books.find_by_slug(params[:slug])
-    if params[:title].empty? || params[:author].empty?
+    if params[:title].empty?
       redirect to "/books/#{@book.slug}"/edit
     else
       @book.update(title: params[:title], author: params[:author], publisher: params[:publisher], genre: params[:genre], pages: params[:pages])
@@ -65,13 +65,13 @@ end
 
   # DELETE: /books/5/delete
   delete "/users/:user_slug/books/:slug/delete" do
-    if logged_in?
-      @user = current_user
-      @book = @user.books.find_by_slug(params[:slug])
-      @book.delete
-    redirect "/users/#{@user.slug}"
-  else
-    redirect to "/login"
+      if logged_in?
+        @user = current_user
+        @book = @user.books.find_by_slug(params[:slug])
+        @book.delete
+        redirect "/users/#{@user.slug}"
+      else
+        redirect to "/login"
+      end
     end
   end
-end
