@@ -7,7 +7,7 @@ class BooksController < ApplicationController
       erb :"/books/index.html"
     else
       redirect to "/login"
-    end 
+    end
   end
 
   # GET: /books/new
@@ -32,7 +32,8 @@ class BooksController < ApplicationController
   end
 
   # GET: /books/5
-  get "/books/:id" do
+  get "/books/:slug" do
+    @book = Book.find_by_slug(params[:slug])
     erb :"/books/show.html"
   end
 
