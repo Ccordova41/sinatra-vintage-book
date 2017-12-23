@@ -1,8 +1,24 @@
 <h2>Great to have you, <%=@user.username%>!</h2>
+
+<% @user.books.each do |book| %>
+<li><h3><a href="/users/<%=@user.slug%>/books/<%=book.slug%>"><%= book.title %></a></h3></li>
+<% end %>
+<br>
+<br>
+<% if session[:user_id] == @user.id %>
+<a href="/books/new">Create/Store Book</a> •
+<a href="/users">Get to know other Vintage Book lovers</a> •
+<a href="/logout">Log Out</a>
+<br>
+
+
+
+
 </br>
 <h3>No need for this awesome site?</h3>
 
 <form method="POST" action="/users/<%=@user.slug%>/delete">
   <input type="hidden" name="_method" value="DELETE">
   <input type="submit" value="Delete Account">
-</form>   
+</form>
+<% end %>

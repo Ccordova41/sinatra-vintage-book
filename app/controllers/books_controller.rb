@@ -10,7 +10,7 @@ class BooksController < ApplicationController
 
   # POST: /books
   post "/books" do
-    if params[:title] == "" || params[:author] == ""
+    if params[:title] == ""
       redirect "/books/new"
     else
       @book = Book.new(params)
@@ -58,7 +58,7 @@ end
     if params[:title].empty? || params[:author].empty?
       redirect to "/books/#{@book.slug}"/edit
     else
-      @book.update(title: params[:title], author: params[:author] ,publisher: params[:publisher], genre: params[:genre], pages: params[:pages])
+      @book.update(title: params[:title], author: params[:author], publisher: params[:publisher], genre: params[:genre], pages: params[:pages])
       redirect "/users/#{@user.slug}/books/#{@book.slug}"
     end
   end
