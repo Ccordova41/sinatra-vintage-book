@@ -2,17 +2,29 @@ class BooksController < ApplicationController
 
   # GET: /books
   get "/books" do
+    @books = Book.all
     erb :"/books/index.html"
   end
 
   # GET: /books/new
   get "/books/new" do
-    erb :"/books/new.html"
+    if logged_in?
+      erb :"/books/new.html"
+    else
+      redirect to "/login"
+    end
   end
 
   # POST: /books
   post "/books" do
-    redirect "/books"
+    if params[:title] == "" || params[:author] == ""
+      redirect "/books/new"
+    else
+      book = Book.new(params)
+      book.user_id = session[:user_id]
+      book.save
+      redirect to "/books"
+    end   
   end
 
   # GET: /books/5
