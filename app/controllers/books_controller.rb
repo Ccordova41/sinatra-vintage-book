@@ -61,7 +61,7 @@ end
       redirect to "/books/#{@book.slug}"/edit
     else
       @book.update(title: params[:title], author: params[:author], publisher: params[:publisher], genre: params[:genre], pages: params[:pages])
-      redirect "/users/#{@user.slug}"
+      redirect "/"
     end
   end
 
