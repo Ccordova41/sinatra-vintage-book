@@ -1,7 +1,7 @@
 <h2>Edit your vintage book:</h2>
 
 <form method="POST" action="/users/<%=@user.slug%>/books/<%=@book.slug%>">
-    <input id="hidden" type="hidden" name="method" value="path">
+  <input id="hidden" type="hidden" name="_method" value="patch">
 
   <label for="title">Title:</label><br>
   <input id="title" type="text" name="title" value="<%=@book.title%>"><br>
@@ -23,5 +23,5 @@
   <input id="pages" type="text" name="pages" value="<%=@book.pages%>"><br>
   <br>
 
-  <input type="submit" value="Edit">
+  <input type="submit" value="Edit!">
 </form>

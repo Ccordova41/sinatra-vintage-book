@@ -16,6 +16,7 @@ class BooksController < ApplicationController
       @book = Book.new(params)
       @book.user_id = session[:user_id]
       @book.save
+      # binding.pry
       redirect to "/"
     end
   end
@@ -52,6 +53,7 @@ end
   end
 
   # PATCH: /books/5
+
   patch "/users/:user_slug/books/:slug" do
     @user = current_user
     @book = current_user.books.find_by_slug(params[:slug])
@@ -59,7 +61,7 @@ end
       redirect to "/books/#{@book.slug}"/edit
     else
       @book.update(title: params[:title], author: params[:author], publisher: params[:publisher], genre: params[:genre], pages: params[:pages])
-      redirect "/users/#{@user.slug}/books/#{@book.slug}"
+      redirect "/users/#{@user.slug}"
     end
   end
 
