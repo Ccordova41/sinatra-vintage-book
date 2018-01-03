@@ -30,7 +30,7 @@
    </nav>
 
   <div class="wrapper">
-
+     <%= flash[:message] if flash[:message] %>
       <%= yield %>
 
     <footer class="branding">

@@ -1,4 +1,7 @@
+require 'rack-flash'
+
 class BooksController < ApplicationController
+  use Rack::Flash
 
   get "/books/new" do
     if logged_in?
@@ -31,6 +34,7 @@ class BooksController < ApplicationController
       redirect to "/books/new"
     end
   else
+    flash[:message] = "Sorry, we can't find a User with this username"
     redirect to "/signup"
   end
 else
