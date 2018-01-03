@@ -69,6 +69,6 @@ class UsersController < ApplicationController
   delete "/users/:slug/delete" do
     @user = User.find_by_slug(params[:slug])
     @user.delete
-    redirect "/home"
+    redirect "/logout"
   end
 end

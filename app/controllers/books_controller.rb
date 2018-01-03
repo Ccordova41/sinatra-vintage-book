@@ -14,6 +14,7 @@ class BooksController < ApplicationController
   # POST: /books
   post "/books" do
     if params[:title] == ""
+      flash[:message] = "ERROR: Sorry, book must include title"
       redirect "/books/new"
     else
       @book = Book.new(params)
