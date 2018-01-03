@@ -4,8 +4,8 @@ class User < ActiveRecord::Base
 
    validates :username, :email, presence: true
    validates :username, :email, uniqueness: true
-   validates :password, length: {minimum: 9}
-   # validates_email_format_of :email
+   validates :password, length: {minimum: 6}
+   validates_email_format_of :email, message: "Let's try again..."
 
    def slug
      username.downcase.gsub(" ", "-")

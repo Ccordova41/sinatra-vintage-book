@@ -1,6 +1,6 @@
 class Book < ActiveRecord::Base
   belongs_to :user
-  # has_one :title
+  has_one :title
 
   def slug
     title.downcase.gsub(" ", "-")
