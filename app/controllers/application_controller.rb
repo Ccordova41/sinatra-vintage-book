@@ -15,13 +15,20 @@ class ApplicationController < Sinatra::Base
       redirect to "/users/#{@user.slug}"
     else
       erb :welcome
-    end 
+    end
+  end
+
+  get "/test" do
+    current_user
+    current_user
+    current_user
+    erb :welcome
   end
 
   helpers do
 
     def current_user
-      User.find(session[:user_id])
+      @user = User.find(session[:user_id])
     end
 
     def logged_in?
